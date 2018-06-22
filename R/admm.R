@@ -58,16 +58,13 @@ mat_shrink <- function (K, tau){
   L <- pmax(s$d-tau,0)
 
   if (r < c) {
-    K <- s$u*diag(L)*t(s$v[,1:r])
+    K <- s$u %*% diag(L) %*% t(s$v[,1:r])
   } else {
-    K <- s$u[,1:c]*diag(L)*t(s$v)
+    K <- s$u[,1:c] %*% diag(L) %*% t(s$v)
   }
-  return(list(K,L))
+  return(K)
+#  return(list(K=K,L=L, s = s))
 }
-
-
-
-
 
 
 #' ADMM
