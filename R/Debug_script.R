@@ -20,4 +20,4 @@ L <- diag(S$L)
 testK <- u %*% L %*% t(v)
 K <- u[,1:4]*diag(L)*t(v)
 
-res = ADMM(G = G, c =c, n = n,maxiter = 3, quiet = FALSE)
+res = ADMM(G = G, c =c, n = n,maxiter = 30, quiet = FALSE)
