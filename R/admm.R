@@ -53,7 +53,7 @@ mat_shrink <- function (K, tau){
   r <- dim(K)[1]
   c <- dim(K)[2]
 
-  s <- svd(K)
+  s <- svd(K, nu=r, nv=c)
   L <- pmax(s$d-tau,0)
 
   if (r < c) {
