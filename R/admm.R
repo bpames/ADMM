@@ -54,12 +54,12 @@ mat_shrink <- function (K, tau){
   c <- dim(K)[2]
 
   s <- svd(K)
-  L <- max(s$d-tau,0)
+  L <- pmax(s$d-tau,0)
 
   if (r < c) {
-    K <- s$u*s$d*t(s$v[,r])
+    K <- s$u*diag(L)*t(s$v[,1:r])
   } else {
-    K <- s$u[,1:c]*s$d*t(s$v)
+    K <- s$u[,1:c]*diag(L)*t(s$v)
   }
   return(K)
 }
