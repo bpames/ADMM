@@ -54,6 +54,7 @@ mat_shrink <- function (K, tau){
   c <- dim(K)[2]
 
   s <- svd(K, nu=r, nv=c)
+  # Test GITHUB CHANGES.
   L <- pmax(s$d-tau,0)
 
   if (r < c) {
@@ -61,7 +62,7 @@ mat_shrink <- function (K, tau){
   } else {
     K <- s$u[,1:c]*diag(L)*t(s$v)
   }
-  return(K)
+  return(list(K,L))
 }
 
 
